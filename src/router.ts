@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@views/HomePage.vue";
+import HomePage from "@views/HomePage.vue";
+import UsersPage from "@views/HomePage.vue";
+import TextareaPage from "@views/TextareaPage.vue";
 
 export default createRouter({
   history: createWebHistory(),
@@ -7,17 +9,17 @@ export default createRouter({
     {
       path: "/",
       meta: { layout: "default" },
-      component: Home,
+      component: HomePage,
     },
     {
       path: "/users",
       meta: { layout: "default" },
-      component: () => import("./views/UsersPage.vue"),
+      component: UsersPage,
     },
     {
       path: "/textarea",
       meta: { layout: "default" },
-      component: () => import("./views/TextareaPage.vue"),
+      component: TextareaPage,
     },
     {
       path: "/:catchAll(.*)",
