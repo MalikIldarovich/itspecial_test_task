@@ -61,4 +61,12 @@ const navsList = [
     width: 0;
   }
 }
+
+@media (max-width: $sm) {
+  .nav {
+    width: 100%;
+    gap: 8px;
+    justify-content: space-around;
+  }
+}
 </style>

@@ -84,4 +84,9 @@ import Typography from "@ui/Typography.vue";
   height: 60px;
   overflow: hidden;
 }
+@media (max-width: $md) {
+  h1.home-page-title {
+    font-size: 28px;
+  }
+}
 </style>

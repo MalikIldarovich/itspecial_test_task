@@ -161,4 +161,10 @@ function updateCheckbox(boolean: boolean) {
     gap: 24px;
   }
 }
+@media (max-width: $sm) {
+  .users-page-group {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
 </style>

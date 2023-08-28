@@ -193,4 +193,18 @@ function onInputUpdate(text: string) {
   color: $light-gray-color;
   margin-top: 24px;
 }
+
+@media (max-width: $lg) {
+  .textarea-page-bottom {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .textarea-page-field {
+    width: 100%;
+    order: 1;
+  }
+  .textarea-page-actions {
+    max-width: 100%;
+  }
+}
 </style>
