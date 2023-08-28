@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+@import "./reset.scss";
+@import "./variables.scss";
+
+body {
+  width: 100wv;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  font-size: $fz-base;
+  line-height: $lh-base;
+  color: $light-color;
+  background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
+  padding: 0;
+  margin: 0;
+}
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+img {
+  object-fit: cover;
+}
+input {
+  border: $border-light;
+}
+button {
+  cursor: pointer;
+  font-size: $fz-md;
+  line-height: $lh-base;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+a {
+  font-weight: 500;
+  color: $link-color;
+  text-decoration: inherit;
+}
+a:hover {
+  color: $link-hover-color;
+}
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 20px;
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  background: url("path-to-your-icon.svg") no-repeat right center;
+  background-size: 16px 16px;
+}
+
+.container {
+  max-width: 1700px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+@media (max-width: $xl) {
+  .container {
+    max-width: $xl;
+  }
+}
+@media (max-width: $lg) {
+  .container {
+    max-width: $lg;
+  }
+}
+@media (max-width: $md) {
+  .container {
+    max-width: $md;
+  }
+}
+@media (max-width: $sm) {
+  .container {
+    max-width: $sm;
+  }
+}
+@media (max-width: $xs) {
+  .container {
+    max-width: $xs;
+  }
+}
