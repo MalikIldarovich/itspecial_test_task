@@ -110,7 +110,7 @@ function handleClick(id: string) {
     justify-content: center;
     max-width: 200px;
     padding: 0 12px;
-    margin: 12px auto 0;
+    margin: 8px auto 8px;
 
     &:first-child {
       width: 70px !important;
