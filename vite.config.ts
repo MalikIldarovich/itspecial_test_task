@@ -3,11 +3,7 @@ import { defineConfig } from "vite";
 import { fileURLToPath } from "url";
 
 export default defineConfig({
-  plugins: [
-    vue({
-      reactivityTransform: "true",
-    }),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: [
       {
