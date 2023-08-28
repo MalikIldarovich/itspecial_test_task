@@ -4,7 +4,7 @@
       "id": "0",
       "first_name": "John",
       "last_name": "Doe",
-      "profile_image": "https://itspecial-test-task.the-void.ru/uploads/1690141001405456018efb3f9.avif",
+      "profile_image": "/1690141001405456018efb3f9.avif",
       "role": "worker",
       "phone": null,
       "date_created": "05.05.2023, 19:30:34",
