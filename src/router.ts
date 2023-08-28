@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@views/HomePage.vue";
-import UsersPage from "@views/HomePage.vue";
+import UsersPage from "@views/UsersPage.vue";
 import TextareaPage from "@views/TextareaPage.vue";
 
 export default createRouter({
