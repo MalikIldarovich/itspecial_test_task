@@ -2,11 +2,12 @@ import { computed, ref } from "vue";
 import { defineStore } from "pinia";
 import { useUsersStore } from "./users";
 import { IUser } from "@/types/user.interface";
+import { nanoid } from "nanoid";
 
 type modeType = "create" | "edit";
 
 const initUser: IUser = {
-  id: new Date().toLocaleDateString(),
+  id: nanoid(),
   first_name: "",
   last_name: "",
   profile_image: null,

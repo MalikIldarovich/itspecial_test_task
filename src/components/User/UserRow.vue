@@ -1,7 +1,7 @@
 <template>
   <div
     class="user-row"
-    @click="() => handleClick(userValues.id)"
+    @click="(e) => handleClick(e, user.id)"
     :style="{
       gridTemplateColumns: withLastName
         ? 'max-content 74px repeat(6, 1fr)'
@@ -12,40 +12,38 @@
     <div class="user-row-field">
       <Avatar
         size="md"
-        :src="userValues.profile_image || ''"
-        :alt="userValues.first_name + ' ' + userValues.last_name"
+        :src="user.profile_image || ''"
+        :alt="user.first_name + ' ' + user.last_name"
       />
     </div>
     <div class="user-row-field name">
       <span class="text">
-        {{ userValues.first_name }}
+        {{ user.first_name }}
       </span>
     </div>
     <div v-if="withLastName" class="user-row-field surname">
       <span class="text">
-        {{ userValues.last_name }}
+        {{ user.last_name }}
       </span>
     </div>
     <div class="user-row-field role">
       <span class="text">
-        {{
-          userValues.role !== "" ? IUsersRoles[userValues.role] : "Не указана"
-        }}
+        {{ user.role !== "" ? IUsersRoles[user.role] : "Не указана" }}
       </span>
     </div>
     <div class="user-row-field phone">
       <span class="text">
-        {{ userValues.phone || "Не указан" }}
+        {{ user.phone || "Не указан" }}
       </span>
     </div>
     <div class="user-row-field phone">
       <span class="text">
-        {{ userValues.date_created }}
+        {{ user.date_created }}
       </span>
     </div>
     <div class="user-row-field phone">
       <span class="text">
-        {{ userValues.date_updated || "Без изменений" }}
+        {{ user.date_updated || "Без изменений" }}
       </span>
     </div>
   </div>
@@ -63,7 +61,6 @@ const props = defineProps<{
 }>();
 
 const { user } = toRefs(props);
-const userValues = ref(user);
 const store = useStore();
 const editorStore = computed(() => {
   const { setEditor, setEditUser, resetEditUser, setMode } =
@@ -78,7 +75,9 @@ const editorStore = computed(() => {
 });
 
 const withLastName = ref(inject("withLastName"));
-function handleClick(id: string) {
+function handleClick(e: Event, id: string) {
+  e.stopPropagation();
+  console.log(id);
   editorStore.value.resetEditUser();
   editorStore.value.setMode("edit");
   editorStore.value.setEditUser(id);

@@ -58,7 +58,9 @@ const socials = [
   gap: 24px;
 }
 .socials-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 32px;
   height: 32px;
   color: #cce2ec;

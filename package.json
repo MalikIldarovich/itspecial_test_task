@@ -13,6 +13,7 @@
     "@types/node": "^20.5.4",
     "@vue/compiler-sfc": "^3.3.4",
     "boxicons": "^2.1.4",
+    "nanoid": "^4.0.2",
     "pinia": "^2.0.0-rc.10",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"

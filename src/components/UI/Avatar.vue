@@ -1,12 +1,19 @@
 <template>
-  <div :class="`avatar ${size}`" @click.stop="open = true">
-    <img v-if="src" class="avatar-image" :src="src" :alt="alt" />
+  <div :class="`avatar ${size}`">
+    <img
+      v-if="src"
+      class="avatar-image"
+      :src="src"
+      :alt="alt"
+      @click.stop="open = true"
+    />
     <box-icon
       v-else
       type="solid"
       name="user-circle"
       color="white"
       class="avatar-placeholder"
+      @click.stop
     ></box-icon>
   </div>
   <Dialog :is-open="open" @open:update="updateOpen">

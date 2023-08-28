@@ -72,12 +72,18 @@ watch(
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  overflow-y: auto;
   background-color: transparent;
   transition: all 0.3s ease-in-out;
   padding: 24px 0;
   margin: auto;
   backdrop-filter: blur(4px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 .dialog-content {
   display: flex;
@@ -86,9 +92,8 @@ watch(
   position: relative;
   width: 50%;
   max-width: 900px;
-  color: $light-color;
-  overflow-y: auto;
   height: fit-content;
+  color: $light-color;
   background-color: $dark-color;
   border-radius: 16px;
   border: $border-light;

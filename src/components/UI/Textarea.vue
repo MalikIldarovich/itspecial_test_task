@@ -106,8 +106,10 @@ watch(
   right: 6px;
   background: linear-gradient(
     180deg,
+    $dark-color 30%,
+    rgba($dark-color, 0.9) 30%,
     $dark-color 50%,
-    rgba($dark-color, 0.7) 70%,
+    rgba($dark-color, 0.8) 70%,
     transparent 100%
   );
   max-width: calc(100% - 12px);

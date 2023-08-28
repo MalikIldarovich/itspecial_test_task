@@ -75,6 +75,7 @@
 <script lang="ts" setup>
 import { ref, watch, computed, Transition } from "vue";
 import { useStore } from "@/store";
+import { nanoid } from "nanoid";
 import { IUser } from "@/types/user.interface";
 import Button from "@ui/Button.vue";
 import Select from "@ui/Select.vue";
@@ -162,6 +163,7 @@ function onSubmit() {
     return;
   } else {
     isLoading.value = true;
+    user.value.id = nanoid();
     usersStore.value.updateOrAdd(user.value, editorStore.value.mode);
     formErrorMessage.value = "";
 
