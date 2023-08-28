@@ -20,10 +20,9 @@
 </template>
 
 <script lang="ts" setup>
-import { Transition } from "vue";
+import { watch, Transition } from "vue";
 import "boxicons";
-
-withDefaults(
+const props = withDefaults(
   defineProps<{
     isOpen?: boolean;
   }>(),
@@ -47,6 +46,17 @@ function shuddle(e: Event) {
     target.classList.remove("shuddle");
   }, 1000);
 }
+
+watch(
+  () => props.isOpen,
+  () => {
+    if (props.isOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }
+);
 </script>
 
 <style lang="scss" scoped>
@@ -60,25 +70,30 @@ function shuddle(e: Event) {
   bottom: 0;
   z-index: 10;
   display: flex;
-  max-height: 100vh;
-  align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  overflow-y: auto;
   background-color: transparent;
   transition: all 0.3s ease-in-out;
+  padding: 24px 0;
+  margin: auto;
   backdrop-filter: blur(4px);
 }
 .dialog-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
   width: 50%;
+  max-width: 900px;
   color: $light-color;
   overflow-y: auto;
-  max-height: 900px;
+  height: fit-content;
   background-color: $dark-color;
   border-radius: 16px;
   border: $border-light;
   padding: 24px;
+  margin: 24px 0;
   box-shadow: $shadow-main;
 }
 .dialog-content-close {

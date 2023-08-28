@@ -67,6 +67,9 @@ select {
   background-size: 16px 16px;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
 .container {
   max-width: 1700px;
   padding: 0 16px;
