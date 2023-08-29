@@ -73,9 +73,9 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import "boxicons";
 import Textarea from "@ui/Textarea.vue";
 import Typography from "@ui/Typography.vue";
+import "boxicons";
 
 const value = ref("");
 const textToCopy = ref("");
@@ -193,7 +193,6 @@ function onInputUpdate(text: string) {
   color: $light-gray-color;
   margin-top: 24px;
 }
-
 @media (max-width: $lg) {
   .textarea-page-bottom {
     flex-direction: column;

@@ -54,6 +54,7 @@ function onChange() {
   emit("update:value", !props.value);
 }
 </script>
+
 <style lang="scss" scoped>
 @import "@assets/css/variables.scss";
 

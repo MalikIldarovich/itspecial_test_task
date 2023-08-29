@@ -36,9 +36,9 @@
 
 <script lang="ts" setup>
 import { ref, toRefs } from "vue";
-import "boxicons";
 import Dialog from "@ui/Dialog.vue";
 import Typography from "@ui/Typography.vue";
+import "boxicons";
 
 const props = defineProps<{
   src: string;
@@ -49,6 +49,7 @@ const props = defineProps<{
 const { src, alt, size } = toRefs(props);
 
 const open = ref(false);
+
 function updateOpen(value: boolean) {
   open.value = value;
 }

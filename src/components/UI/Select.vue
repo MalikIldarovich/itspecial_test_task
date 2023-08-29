@@ -11,7 +11,7 @@
         :required="required"
         :disabled="disabled"
         v-bind:value="value"
-        class="select-input"
+        :class="['select-input', error ? 'invalid-input' : '']"
         @blur="onBlur"
         @input="onInput"
       >
@@ -43,8 +43,8 @@
 
 <script lang="ts" setup>
 import { ref, Transition } from "vue";
-import "boxicons";
 import { inputValidate } from "@utils/input.validate";
+import "boxicons";
 
 const props = withDefaults(
   defineProps<{
@@ -99,7 +99,7 @@ function onBlur() {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@assets/css/variables.scss";
 
 .select {
@@ -146,6 +146,9 @@ function onBlur() {
   &:focus {
     border-color: $primary-color;
   }
+}
+.select-input.invalid-input {
+  border-color: $error-color;
 }
 .select-icon {
   position: absolute;

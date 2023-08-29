@@ -1,10 +1,11 @@
 import { computed, ref } from "vue";
 import { defineStore } from "pinia";
 import { useUsersStore } from "./users";
-import { IUser } from "@/types/user.interface";
 import { nanoid } from "nanoid";
+import { dateCreate } from "@/utils/date.create";
 
-type modeType = "create" | "edit";
+import { IUser } from "@/types/user.interface";
+import { ModeType } from "../store.types";
 
 const initUser: IUser = {
   id: nanoid(),
@@ -13,36 +14,27 @@ const initUser: IUser = {
   profile_image: null,
   role: "",
   phone: null,
-  date_created: new Date().toLocaleDateString("ru-RU", {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  }),
+  date_created: dateCreate(),
   date_updated: null,
 };
 
 export const useEditorStore = defineStore("editorStore", () => {
-  const users = computed(() => useUsersStore().users);
-  const mode = ref<modeType>("create");
+  const usersStore = computed(() => {
+    const { users, addUser, updateUser } = useUsersStore();
+    return {
+      users,
+      addUser,
+      updateUser,
+    };
+  });
+
+  const mode = ref<ModeType>("create");
   const editor = ref(false);
   const editUser = ref<IUser>(initUser as IUser);
 
-  function getCurrentEditUser() {
-    return editUser.value;
-  }
-
-  function setMode(modeValue: modeType) {
+  function setMode(modeValue: ModeType) {
     mode.value = modeValue;
     if (modeValue === "create") resetEditUser();
-  }
-
-  function setEditUser(id: string) {
-    const currentUser = users.value.find((i) => i.id === id);
-    if (currentUser) {
-      editUser.value = currentUser;
-    }
   }
 
   function setEditor(bool: boolean) {
@@ -50,18 +42,38 @@ export const useEditorStore = defineStore("editorStore", () => {
     return editor;
   }
 
+  function setEditUser(id: string) {
+    const currentUser = usersStore.value.users.find((i) => i.id === id);
+    if (currentUser) {
+      editUser.value = currentUser;
+    }
+  }
+
   function resetEditUser() {
     editUser.value = initUser;
+  }
+
+  function getCurrentEditUser() {
+    return editUser.value;
+  }
+
+  function sendEditableUser(user: IUser) {
+    if (mode.value === "create") {
+      usersStore.value.addUser(user);
+    } else {
+      usersStore.value.updateUser(user);
+    }
   }
 
   return {
     mode,
     editor,
     editUser,
-    getCurrentEditUser,
     setMode,
     setEditor,
     setEditUser,
     resetEditUser,
+    getCurrentEditUser,
+    sendEditableUser,
   };
 });

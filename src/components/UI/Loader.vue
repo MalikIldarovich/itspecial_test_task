@@ -15,7 +15,7 @@ withDefaults(
 );
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .loader {
   transform: rotate(0);
   animation: spin 1s infinite linear;

@@ -2,6 +2,8 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 import { IUser, IUsersFields } from "@/types/user.interface";
 import * as usersData from "@/example-data.json";
+import { dateCreate } from "@/utils/date.create";
+import { nanoid } from "nanoid";
 
 function initialUsersState(): IUser[] {
   return usersData.data as IUser[];
@@ -57,35 +59,23 @@ export const useUsersStore = defineStore("usersStore", () => {
     });
   }
 
-  function updateOrAdd(user: IUser, mode: string) {
-    if (mode === "create") {
-      user.date_created = new Date().toLocaleDateString("ru-RU", {
-        day: "numeric",
-        month: "numeric",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-      users.value.push(user);
-      return users.value;
-    } else {
-      users.value = users.value.map((i) => {
-        if (i.id === user.id) {
-          user.date_updated = new Date().toLocaleDateString("ru-RU", {
-            day: "numeric",
-            month: "numeric",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          });
-          i = user;
-          return i;
-        }
+  function addUser(user: IUser) {
+    user.date_created = dateCreate();
+    user.id = nanoid();
+    users.value.push(user);
+  }
+
+  function updateUser(user: IUser) {
+    users.value = users.value.map((i) => {
+      if (i.id === user.id) {
+        user.date_updated = dateCreate();
+        i = user;
         return i;
-      });
-    }
+      }
+      return i;
+    });
+
+    console.log(users.value, user);
   }
 
   return {
@@ -94,6 +84,7 @@ export const useUsersStore = defineStore("usersStore", () => {
     getByRole,
     getBySearchParam,
     getCount,
-    updateOrAdd,
+    addUser,
+    updateUser,
   };
 });

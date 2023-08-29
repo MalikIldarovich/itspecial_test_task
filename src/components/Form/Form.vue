@@ -75,25 +75,16 @@
 <script lang="ts" setup>
 import { ref, watch, computed, Transition } from "vue";
 import { useStore } from "@/store";
-import { nanoid } from "nanoid";
 import { IUser } from "@/types/user.interface";
+import {
+  IEmitDataError,
+  IEmitDataText,
+  IEmitDataFile,
+} from "./emits.interface";
 import Button from "@ui/Button.vue";
 import Select from "@ui/Select.vue";
 import TextField from "@ui/TextField.vue";
 import ImageCapture from "@ui/ImageCapture.vue";
-
-interface IEmitDataText {
-  name: keyof Pick<IUser, "first_name" | "last_name">;
-  value: string;
-}
-interface IEmitDataFile {
-  name: "file_image";
-  value: File;
-}
-interface IEmitDataError {
-  name: keyof Pick<IUser, "first_name" | "last_name" | "role">;
-  value: boolean;
-}
 
 const roles = [
   { value: "worker", title: "Работник" },
@@ -101,18 +92,20 @@ const roles = [
 ];
 
 const store = useStore();
-const usersStore = computed(() => {
-  const { users, updateOrAdd } = store.modules.useUsersStore();
-  return { users, updateOrAdd };
-});
-
 const editorStore = computed(() => {
-  const { mode, setEditor, getCurrentEditUser } =
+  const { mode, setEditor, getCurrentEditUser, sendEditableUser } =
     store.modules.useEditorStore();
-  return { mode, setEditor, getCurrentEditUser };
+
+  return {
+    mode,
+    setEditor,
+    getCurrentEditUser,
+    sendEditableUser,
+  };
 });
 
 const user = ref<IUser>({ ...editorStore.value.getCurrentEditUser() });
+
 const isLoading = ref(false);
 const fileImage = ref(null);
 const newImage = ref("");
@@ -131,11 +124,9 @@ function updateError(error: IEmitDataError) {
     [error.name]: error.value,
   };
 }
-
 function onChange({ name, value }: IEmitDataText) {
   user.value[name] = value;
 }
-
 function onChangeImage(file: IEmitDataFile) {
   const formData = new FormData();
   formData.append("file", file.value);
@@ -163,8 +154,7 @@ function onSubmit() {
     return;
   } else {
     isLoading.value = true;
-    user.value.id = nanoid();
-    usersStore.value.updateOrAdd(user.value, editorStore.value.mode);
+    editorStore.value.sendEditableUser(user.value);
     formErrorMessage.value = "";
 
     // Эмитацтия запроса

@@ -29,6 +29,7 @@ const { headerValue } = toRefs(props);
 
 const descDir = ref(true);
 const store = useStore();
+
 const usersStore = computed(() => {
   const { sortByField } = store.modules.useUsersStore();
   return { sortByField };
@@ -66,7 +67,6 @@ function handleSort(index: number) {
   width: 12px;
   font-size: $fz-xs;
 }
-
 .text {
   width: 200px;
   padding: 8px;

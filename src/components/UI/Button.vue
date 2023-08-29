@@ -15,8 +15,8 @@
 </template>
 
 <script lang="ts" setup>
-import "boxicons";
 import Loader from "./Loader.vue";
+import "boxicons";
 
 withDefaults(
   defineProps<{

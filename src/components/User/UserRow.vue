@@ -62,6 +62,7 @@ const props = defineProps<{
 
 const { user } = toRefs(props);
 const store = useStore();
+
 const editorStore = computed(() => {
   const { setEditor, setEditUser, resetEditUser, setMode } =
     store.modules.useEditorStore();
@@ -75,6 +76,7 @@ const editorStore = computed(() => {
 });
 
 const withLastName = ref(inject("withLastName"));
+
 function handleClick(e: Event, id: string) {
   e.stopPropagation();
   console.log(id);
@@ -85,7 +87,7 @@ function handleClick(e: Event, id: string) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@assets/css/variables.scss";
 
 .user-row {

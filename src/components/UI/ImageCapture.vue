@@ -70,7 +70,7 @@ function onInput(e: Event) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@assets/css/variables.scss";
 
 .image-capture {

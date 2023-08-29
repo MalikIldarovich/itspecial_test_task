@@ -22,6 +22,7 @@
 <script lang="ts" setup>
 import { watch, Transition } from "vue";
 import "boxicons";
+
 const props = withDefaults(
   defineProps<{
     isOpen?: boolean;
@@ -134,7 +135,7 @@ watch(
 .bounce-leave-active {
   animation: bounce-in 0.5s reverse;
 }
-.shuddle {
+.shuddle > .dialog-content {
   animation: shuddle 0.2s 3;
 }
 

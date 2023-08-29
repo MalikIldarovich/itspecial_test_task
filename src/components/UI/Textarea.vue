@@ -10,9 +10,9 @@
       :value="value"
       ref="textareaRef"
       class="textarea-field"
-      @input="onInput"
-      @focus="onFocus"
       @blur="onBlur"
+      @focus="onFocus"
+      @input="onInput"
     ></textarea>
     <Transition name="slide-fade">
       <div v-if="error">
@@ -24,6 +24,7 @@
 
 <script lang="ts" setup>
 import { ref, watch } from "vue";
+
 const props = withDefaults(
   defineProps<{
     value: string;
@@ -43,8 +44,8 @@ const props = withDefaults(
 );
 
 const emit = defineEmits(["update:value"]);
-const error = ref<string | undefined>("");
 
+const error = ref<string | undefined>("");
 const labelRef = ref<HTMLLabelElement | null>(null);
 const textareaRef = ref<HTMLTextAreaElement | null>(null);
 

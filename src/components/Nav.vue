@@ -31,7 +31,6 @@ const navsList = [
   position: relative;
   color: $primary-color;
   transition: all 0.3s ease-in-out;
-
   &::after {
     content: "";
     position: absolute;
@@ -43,7 +42,6 @@ const navsList = [
     background-color: $secondary-color;
     transition: all 0.3s ease-in-out;
   }
-
   &:hover {
     color: $secondary-color;
   }
@@ -61,7 +59,6 @@ const navsList = [
     width: 0;
   }
 }
-
 @media (max-width: $sm) {
   .nav {
     width: 100%;

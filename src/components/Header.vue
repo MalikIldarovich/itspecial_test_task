@@ -8,13 +8,8 @@
 </template>
 
 <script lang="ts" setup>
-import { defineComponent } from "vue";
 import Nav from "@components/Nav.vue";
 import Logo from "@components/UI/Logo.vue";
-
-defineComponent({
-  components: Nav,
-});
 </script>
 
 <style lang="scss" scoped>

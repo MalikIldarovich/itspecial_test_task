@@ -26,7 +26,7 @@ const usersStore = computed(() => {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@assets/css/variables.scss";
 
 .user-list {

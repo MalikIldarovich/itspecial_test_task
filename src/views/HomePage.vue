@@ -52,8 +52,8 @@
 </template>
 
 <script lang="ts" setup>
-import "boxicons";
 import Typography from "@ui/Typography.vue";
+import "boxicons";
 </script>
 
 <style lang="scss" scoped>

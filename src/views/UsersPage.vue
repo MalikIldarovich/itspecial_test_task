@@ -149,7 +149,6 @@ function updateCheckbox(boolean: boolean) {
     list-style: disc;
   }
 }
-
 @media (max-width: 1452px) {
   .users-page-top {
     max-width: 100%;

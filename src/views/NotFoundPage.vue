@@ -25,7 +25,6 @@
   flex-direction: column;
   gap: 16px;
 }
-
 .not-found-title {
   font-size: 36px;
   font-weight: bold;
@@ -49,7 +48,6 @@
     object-fit: cover;
   }
 }
-
 @media (max-width: $sm) {
   .not-found-title {
     font-size: 28px;

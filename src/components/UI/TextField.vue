@@ -15,7 +15,7 @@
         v-bind:value="value"
         @input="onInput"
         @blur="onBlur"
-        class="text-field-input"
+        :class="['text-field-input', error ? 'invalid-input' : '']"
       />
       <div v-if="icon != null" class="icon-container">
         <box-icon
@@ -58,6 +58,7 @@ const props = withDefaults(
 );
 
 const emit = defineEmits(["update:value", "update:error"]);
+
 const error = ref<string | undefined>("");
 
 function onInput(e: Event) {
@@ -123,6 +124,7 @@ function onBlur() {
     font-style: italic;
   }
 }
+
 .primary > .text-field-input {
   border-color: $primary-color;
   &:focus {
@@ -134,6 +136,9 @@ function onBlur() {
   &:focus {
     border-color: $primary-color;
   }
+}
+.text-field-input.invalid-input {
+  border-color: $error-color;
 }
 .text-field-icon {
   position: absolute;

@@ -1,13 +1,4 @@
-interface IInputArg {
-  name: string;
-  type: string;
-  label: string;
-  value: string;
-}
-interface IValidatorArg {
-  minLength?: number;
-  maxLength?: number;
-}
+import { IInputArg, IValidatorArg } from "./interfaces";
 
 export function inputValidate(
   input: IInputArg,
